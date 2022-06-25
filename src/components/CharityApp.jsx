@@ -33,7 +33,7 @@ const CharityApp = (props) => {
                 <br />
                 <DonateButton 
                     recipientAddress={recipient[1]} 
-                    amountToDonate={amountToDonate} 
+                    amountToDonate={amountToDonate}
                     currentAccount={props.currentAccount} 
                     updateRecipientBalance={updateRecipientBalance}
                 />
