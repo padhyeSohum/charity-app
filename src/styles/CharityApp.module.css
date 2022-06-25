@@ -1,0 +1,17 @@
+.charityAppContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 2px solid gray;
+    border-radius: 10px;
+    width: 50%;
+    transform:translateX(50%)
+}
+
+.elementsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 20px 20px;
+    width: 50%;
+}

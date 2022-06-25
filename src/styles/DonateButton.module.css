@@ -1,0 +1,21 @@
+.donateButtonContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.donateButton {
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    width: 90%;
+    height: 30px;
+}
+
+.donateButton:disabled {
+    background-color: gray;
+}
+
+.errorMessageText {
+    color: red;
+}
