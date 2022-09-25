@@ -9,7 +9,6 @@ const CharityList = (props) => {
         ethereum.request({ method: 'eth_getBalance', params: [address, 'latest'] })
         .then(
             (balance) => {
-                console.log(balance);
                 props.updateRecipient(e.target.innerHTML, address, balance);
             }
         )

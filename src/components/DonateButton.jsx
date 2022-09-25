@@ -35,7 +35,6 @@ const DonateButton = (props) => {
                 ethereum.request({ method: 'eth_getBalance', params: [props.recipientAddress, 'latest'] })
                 .then(
                     (balance) => {
-                        console.log(Web3.utils.fromWei(String(parseInt(balance, 16))), 'ether')
                         props.updateRecipientBalance(balance);
                     }
                 )
@@ -46,7 +45,6 @@ const DonateButton = (props) => {
         }
         catch (err) {
             console.log(err);
-            console.log('reject button pressed');
             setTransactionStatus(err.message);
         }
     }
@@ -67,7 +65,6 @@ const DonateButton = (props) => {
         if (props.recipientAddress && props.amountToDonate > 0 && parseFloat(props.amountToDonate) + 0.0001 < parseFloat(parseInt(userBalance, 16) / 10**18)) {
             setIsDisabled(false);
             setErrorMessage('');
-            // console.log('false')
         }
 
         else if (!props.recipientAddress) {
@@ -83,7 +80,6 @@ const DonateButton = (props) => {
         else {
             // setIsDisabled(true);
             setErrorMessage('Insufficient funds in wallet.');
-            // console.log('true');
         }
     }
 

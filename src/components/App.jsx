@@ -17,7 +17,6 @@ const App = () => {
     }
 
     const handleAccountsChanged = (accounts) => {
-        // console.log(accounts);
 
         if (accounts.length === 0) {
             setWalletIsConnected(false);
