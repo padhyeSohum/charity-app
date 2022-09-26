@@ -11,11 +11,13 @@ contract CharityApp {
         owner = msg.sender;
     }
 
-    function transferFunds(address payable to) external payable {
+    function transferFunds(address payable _to) external payable {
 
         require(msg.sender.balance >= msg.value, "Not enough ETH!");
         
-        to.transfer(msg.value);
+        _to.transfer(msg.value);
+        // (bool success, ) = _to.call{value: msg.value}("");
+        // require(success, "transaction failed");
     }
 
     function balanceOf(address account) external view returns (uint256) {

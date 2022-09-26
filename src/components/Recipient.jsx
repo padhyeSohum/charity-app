@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react';
+import Web3 from 'web3';
+
+const web3 = Web3;
 
 const Recipient = (props) => {
 

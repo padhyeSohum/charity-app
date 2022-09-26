@@ -4,6 +4,8 @@ import styles from '../styles/DonateButton.module.css';
 import Web3 from 'web3';
 import CharityApp from '../CharityApp.sol/CharityApp.json'
 
+const web3 = Web3;
+
 const DonateButton = (props) => {
 
     const [transactionStatus, setTransactionStatus] = useState('');
@@ -11,7 +13,7 @@ const DonateButton = (props) => {
     const [userBalance, setUserBalance] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const CONTRACT_ADDRESS = '0x2bA21Ced1880F825e2D0320a015Fbb8898CD748e';
+    const CONTRACT_ADDRESS = '0x7a3Ad75e2653d6baeE11C6Ab6E98Fa13fee73332';
 
     const { ethereum } = window;
 
@@ -26,7 +28,7 @@ const DonateButton = (props) => {
                 const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, CharityApp.abi, signer);
                 
                 let donateTxn = await connectedContract.transferFunds(props.recipientAddress, {
-                    value: (props.amountToDonate * 10**18).toString()
+                    value: web3.utils.toWei(String(props.amountToDonate), "ether")
                 })
 
                 await donateTxn.wait();
@@ -62,7 +64,7 @@ const DonateButton = (props) => {
 
         setIsDisabled(true);
 
-        if (props.recipientAddress && props.amountToDonate > 0 && parseFloat(props.amountToDonate) + 0.0001 < parseFloat(parseInt(userBalance, 16) / 10**18)) {
+        if (props.recipientAddress && props.amountToDonate > 0 && parseFloat(props.amountToDonate) + 0.0001 < web3.utils.fromWei(String(parseInt(userBalance, 16)), "ether")) {
             setIsDisabled(false);
             setErrorMessage('');
         }
